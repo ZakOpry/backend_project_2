@@ -1,31 +1,34 @@
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #969595;
+    background-color: #979DAC;
     color:#000000
 }
+
 p {
     color: #FFFFFF;
+    margin-left: 10px;
+    font-family:Arial, Helvetica, sans-serif
 }
 
 .wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 75vw;
+    width: 100%;
 }
 
 .header {
-    grid-column: 1 / 3;
+    background-color: #002855;
     height: 5vw;
-    width: 100%;
-    border: 1px solid black;
+    width: 99%;
     margin: 3px;
 }
 
 .jobs {
-    width: 75%;
+    width: 78%;
     max-height: 40vw;
     margin: 3px;
     font-size: 16px;
