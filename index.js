@@ -5,7 +5,7 @@ const app = express()
 const cors = require("cors")
 const path = require("path")
 const Sequelize = require('sequelize')
-const { User, Job, Weld} = require('./models');
+const { User, Job, Weld } = require('./models');
 const PORT = 3008
 
 app.engine('html', es6Renderer)
@@ -13,14 +13,21 @@ app.set('views', 'templates')
 app.set('view engine', 'html')
 app.use(express.json())
 app.use(cors())
-app.use("/public", express.static(path.join(__dirname,"public")))
+app.use("/public", express.static(path.join(__dirname, "public")))
 
 //to get all users
 app.get('/users', async (req, res) => {
     const users = await User.findAll()
-    res.render("home", {locals:
-    {users}})
-})
+    res.render("home", {
+        locals:
+        {
+            users:users
+        },
+        partials : {
+            head: '/partials/head'
+        },
+        })
+});
 
 
 //to get user by id
@@ -44,20 +51,14 @@ app.get('/users/jobs', async (req, res) => {
         {users}})
     })
 
-
-
 //to search by user and get associated jobs
-app.get('/user/jobs/:userId', async (req, res) => {
+app.get('/user/jobs/welds', async (req, res) => {
     const userJobs = await Job.findAll({
-        where: {
-            userId: req.params.userId
-        },
-        include: {
-            model: User
-        }
     })
-    res.render("home", {locals:
-    {userJobs}})
+    const welds = await Weld.findAll({
+    })
+    const allInfo = userJobs.concat(welds)
+    res.send(allInfo)
 })
 
 //to get all jobs and users associated with jobs
@@ -73,14 +74,21 @@ app.get('/jobs', async (req, res) => {
 
 
 //to get all jobs and associated welds
-app.get('/jobs/welds/:jobId', async (req, res) => {
+app.get('/jobs/welds/:jobId/', async (req, res) => {
     const welds = await Weld.findAll({
-        where: [{
+        where: {
             jobId: req.params.jobId
-        }]
+        }
     })
-    res.render("home", {locals:
-    {welds}})
+    res.render("welds", 
+    {
+        locals:{
+            welds: welds
+    },
+    partials: {
+        head: '/partials/head'
+    }
+})
 })
 
 //to search by job and get job and weld info
