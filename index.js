@@ -211,7 +211,7 @@ console.log(validated)
 //     // result == false
 // });
 if (validated) {
-    res.redirect("http://localhost:3008/users/jobs/welds")
+    res.redirect("")
 } else {
     res.redirect("error")
 }
