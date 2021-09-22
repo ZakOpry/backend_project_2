@@ -124,17 +124,17 @@ app.get('/welds', async (req, res) => {
 
 //to create a new user
 app.post('/createuser', async (req, res) => {
-const { username, email, password } = req.body;
+const { email, username, password } = req.body;
 const userPasword = password
 const userEmail = email
 const newUserName = username
 const salt = await bcrypt.genSalt();
-const hashedEmail = await bcrypt.hash(userEmail, salt)
-const hashedUsername = await bcrypt.hash(newUserName, salt)
+// const hashedEmail = await bcrypt.hash(userEmail, salt)
+// const hashedUsername = await bcrypt.hash(newUserName, salt)
 const hashedPassword = await bcrypt.hash(userPasword, salt)
 const newUser = await User.create({
-    username: hashedUsername,
-    email: hashedEmail,
+    username,
+    email,
     password: hashedPassword
 })
 res.send({
@@ -142,24 +142,46 @@ res.send({
 })
 })
 
-//to log in as a user
+//log in page
 app.get('/login', async(req, res) => {
+    res.render("login")
+})
+
+
+
+
+//to log in as a user
+app.post('/login/user', async(req, res) => {
 const username = req.body.username
 const email = req.body.email
 const password = req.body.password
 
-const user = await User.findAll({
+const user = await User.findOne({
+
     where: {
-        username,
-        email,
-        password
+        username: username,
+        
     }
+
 })
-if (user) {
-    res.redirect("home")
+const userData = user.dataValues
+
+const validated = await bcrypt.compare(password, userData.password)
+console.log(validated)
+// Load hash from your password DB.
+
+// bcrypt.compare(myPlaintextPassword, hash, function(err, result) {
+//     // result == true
+// });
+// bcrypt.compare(someOtherPlaintextPassword, hash, function(err, result) {
+//     // result == false
+// });
+if (validated) {
+    res.redirect("http://localhost:3008/users/jobs/welds")
 } else {
-    res.redirect("error page")
+    res.redirect("error")
 }
+
 
 })
 
