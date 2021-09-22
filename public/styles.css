@@ -1,0 +1,58 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #969595;
+    color:#000000
+}
+p {
+    color: #FFFFFF;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 75vw;
+}
+
+.header {
+    grid-column: 1 / 3;
+    height: 5vw;
+    width: 100%;
+    border: 1px solid black;
+    margin: 3px;
+}
+
+.jobs {
+    width: 75%;
+    max-height: 40vw;
+    margin: 3px;
+    font-size: 16px;
+    border: 1px solid black;
+    overflow: auto;
+}
+
+.sidebar {
+    border: 1px solid black;
+    width: 20%;
+    margin: 3px;
+}
+
+.collapsible {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: 1px solid black;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.collapsible::after {
+    content: '\25be';
+    float: right;
+    transform: scale(1.5)
+}
