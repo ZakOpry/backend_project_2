@@ -1,7 +1,12 @@
 {
   "development": {
+<<<<<<< Updated upstream
     "username": "postgres",
     "password": "Chowder_110294",
+=======
+    "username": "",
+    "password": "",
+>>>>>>> Stashed changes
     "database": "jobs_data",
     "host": "127.0.0.1",
     "dialect": "postgres"
