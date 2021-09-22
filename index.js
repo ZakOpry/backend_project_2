@@ -1,4 +1,5 @@
 const express = require('express')
+const bcrypt = require('bcrypt')
 const es6Renderer = require('express-es6-template-engine')
 const app = express()
 const cors = require("cors")
@@ -123,26 +124,56 @@ app.get('/welds', async (req, res) => {
 
 //to create a new user
 app.post('/createuser', async (req, res) => {
-const { username, email} = req.body;
+const { username, email, password } = req.body;
+const userPasword = password
+const userEmail = email
+const newUserName = username
+const salt = await bcrypt.genSalt();
+const hashedEmail = await bcrypt.hash(userEmail, salt)
+const hashedUsername = await bcrypt.hash(newUserName, salt)
+const hashedPassword = await bcrypt.hash(userPasword, salt)
 const newUser = await User.create({
-    username,
-    email
+    username: hashedUsername,
+    email: hashedEmail,
+    password: hashedPassword
 })
 res.send({
     id: newUser.id
 })
 })
 
+//to log in as a user
+app.get('/login', async(req, res) => {
+const username = req.body.username
+const email = req.body.email
+const password = req.body.password
+
+const user = await User.findAll({
+    where: {
+        username,
+        email,
+        password
+    }
+})
+if (user) {
+    res.redirect("home")
+} else {
+    res.redirect("error page")
+}
+
+})
 
 //to create a new job
 app.post('/createJob', async (req, res) => {
-    const {  job_number, purchase_order, name, userId} = req.body
+    const {  job_number, purchase_order, name, userId, estimate, expected_complete} = req.body
     const newJob = await Job.create({
         
         job_number,
         purchase_order,
         name,
-        userId
+        userId,
+        estimate,
+        expected_complete
         
     })
     res.send({
