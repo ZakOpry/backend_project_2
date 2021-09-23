@@ -50,14 +50,23 @@ app.get('/users/jobs', async (req, res) => {
     res.render("home", {locals:
         {users}})
     })
+    
+app.get("/home", async (req, res) => {
+    res.render("home")
+})
 
 //to search by user and get associated jobs
 app.get('/user/jobs/welds', async (req, res) => {
     const userJobs = await Job.findAll({
     })
     const welds = await Weld.findAll({
+        where: {
+
+        }
     })
-    const allInfo = userJobs.concat(welds)
+    const allInfo = []
+    allInfo.push(userJobs)
+    allInfo.push(welds)
     res.send(allInfo)
 })
 
@@ -140,9 +149,28 @@ const newUser = await User.create({
     email,
     password: hashedPassword
 })
-res.send({
-    id: newUser.id
+res.render("register")
 })
+
+//to log in as a user
+app.get('/login', async(req, res) => {
+const username = req.body.username
+const email = req.body.email
+const password = req.body.password
+
+const user = await User.findAll({
+    where: {
+        username,
+        email,
+        password
+    }
+})
+if (user) {
+    res.redirect("http://localhost:3008/user/jobs/welds")
+} else {
+    res.redirect("error page")
+}
+
 })
 
 //log in page
