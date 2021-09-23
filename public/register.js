@@ -7,7 +7,7 @@ const regUser = async () => {
     const url = "http://localhost:3008/createuser";
     
     userObject = { password, username, email };
-
+    
     const userData = await fetch (url, {
         method: "POST",
         mode: "cors",
