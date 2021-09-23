@@ -1,4 +1,5 @@
 const logInButton = document.querySelector(".logInButton");
+const link = document.querySelector("a")
 
 const logInUser = async () => {
     const username = document.querySelector(".username").value;
@@ -23,5 +24,8 @@ const logInUser = async () => {
     console.log(loginUserData)
 
 }
+
+
+
 
 logInButton.addEventListener("click", () => {logInUser()})
