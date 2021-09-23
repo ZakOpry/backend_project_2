@@ -1,0 +1,45 @@
+
+body { 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+}
+
+.mainContainer{ 
+    border: solid black 2px;
+    
+height: 300px;
+width: 600px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+align-items: center;
+}
+
+.username {
+    width: 200px;
+margin: 10px;}
+
+.email{
+    width: 200px;
+    margin: 10px;
+}
+
+.password{
+    width: 200px;
+    margin: 10px;
+}
+
+.logInButton{
+    margin: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(61, 72, 70);
+    margin: 10px;
+}

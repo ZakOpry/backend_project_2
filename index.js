@@ -130,9 +130,11 @@ app.get('/welds', async (req, res) => {
     {welds}})
 })
 
-app.get("/register", async (req, res) => {
-    res.render("register")
+//register page
+app.get('/register', async(req, res) => {
+    res.render('register')
 })
+
 
 //to create a new user
 app.post('/createuser', async (req, res) => {
@@ -141,8 +143,6 @@ const userPasword = password
 const userEmail = email
 const newUserName = username
 const salt = await bcrypt.genSalt();
-// const hashedEmail = await bcrypt.hash(userEmail, salt)
-// const hashedUsername = await bcrypt.hash(newUserName, salt)
 const hashedPassword = await bcrypt.hash(userPasword, salt)
 const newUser = await User.create({
     username,
@@ -199,14 +199,6 @@ const userData = user.dataValues
 
 const validated = await bcrypt.compare(password, userData.password)
 console.log(validated)
-// Load hash from your password DB.
-
-// bcrypt.compare(myPlaintextPassword, hash, function(err, result) {
-//     // result == true
-// });
-// bcrypt.compare(someOtherPlaintextPassword, hash, function(err, result) {
-//     // result == false
-// });
 if (validated) {
     res.redirect("")
 } else {
