@@ -152,8 +152,6 @@ const newUser = await User.create({
 res.render("register")
 })
 
-<<<<<<< Updated upstream
-=======
 //to log in as a user
 app.get('/login', async(req, res) => {
 const username = req.body.username
@@ -174,7 +172,6 @@ if (user) {
 }
 
 })
->>>>>>> Stashed changes
 
 //log in page
 app.get('/login', async(req, res) => {
