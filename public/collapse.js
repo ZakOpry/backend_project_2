@@ -1,11 +1,13 @@
-var button = document.getElementsByClassName("collapsible");
+const button = document.getElementsByClassName(".collapsible");
 
-button.addEventListener("click", function () {
-  this.classList.toggle("active");
+const collapse = () => {
+  button.toggleAttribute("active");
   var content = this.nextElementSibling;
   if (content.style.display === "block") {
       content.style.display = "none";
   } else {
       content.style.display = "block";
   }
-});
+}
+button.addEventListener("click", collapse())
+  

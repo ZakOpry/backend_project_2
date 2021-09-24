@@ -4,16 +4,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JOBStack</title>
     <link rel="stylesheet" href="/public/styles.css">
 </head>
 <body>
-    <div class = "header">header</div>
-    <div class = "topper">CRUD area?</div>
+    <div class = "header">JOBStack</div>
+
+    <div class = "crudgroup">
+ 
+    <button class = "crudbutton" id = "addjob">Add Job</button>
+    <button class = "crudbutton" id = "rmvjob">Remove Job</button>
+    <button class = "crudbutton" id = "updatejob">Update Job</button>
+    <button class = "crudbutton" id = "addweld">Add Weld</button>
+    <button class = "crudbutton" id = "rmvweld">Remove Weld</button>
+    <button class = "crudbutton" id = "updateweld">Update Weld</button>
+
+    <div class="addJob" id="modalForm">
+        <div class="addjobformContainer">
+        <h1>Add a Job:</h1>
+        <input class = "jobname" type="text" placeholder = "Job Name"></input>
+        <input class = "jobnumber" type="text" placeholder = "Job Number"></input>
+        <input class = "jobpurchase" type="text" placeholder = "Purchase Order"></input>
+        <input class = "jobuserId" type="text" placeholder = "UserId"></input>
+        <input class = "jobestimate" type="text" placeholder = "Estimate"></input>
+        <input class = "jobexpected" type="text" placeholder = "Expected Complete"></input>
+        <button class = "closeform">Add</button>
+        </div>
+    </div> 
+
+    <div class="addWeld" id="weldModal">
+        <div class="addweldformContainer">
+        <h1>Add a Weld:</h1>
+        <input class = "weldId" type="text" placeholder = "Weld ID"></input>
+        <input class = "partNumber1" type="text" placeholder = "Part Number 1"></input>
+        <input class = "partNumber2" type="text" placeholder = "Part Number 2"></input>
+        <input class = "jobId" type="text" placeholder = "Job Number"></input>
+        <button class = "weldModalAdd">Add</button>
+        </div>
+    </div>
+
+    <div class="removeJob" id="removeJobID">
+        <div class="removejobformContainer">
+        <h1>Remove a Job:</h1>
+        <input class = "rmvjobId" type="text" placeholder = "Job ID"></input>
+        <button class = "jobModalRemove">Remove</button>
+        </div>
+    </div>
+
+    <div class="removeWeld" id="removeWeldID">
+        <div class="removeweldformContainer">
+        <h1>Remove a Job:</h1>
+        <input class = "rmvweldId" type="text" placeholder = "Weld ID"></input>
+        <button class = "weldModalRemove">Remove</button>
+        </div>
+    </div>
+
     <div class = "wrapper">
         <div class = "jobs"></div>    
     </div>
 </body>
+<script src="/public/addjobmodal.js"></script>
+<script src="/public/addweldmodal.js"></script>
+<script src="/public/removejobmodal.js"></script>
+<script src="/public/removeweldmodal.js"></script>
 <script src="/public/home.js"></script>
 </html>
 
