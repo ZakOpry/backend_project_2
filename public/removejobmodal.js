@@ -3,14 +3,13 @@ const rmvJobModal = document.querySelector("#rmvjob")
 
 const rmvJobForm = () => {
     document.getElementById("removeJobID").style.display = "block";
-    console.log("opened")
+
 }
 
 const rmvJob = async () => {
     const jobId = document.querySelector(".rmvjobId").value;
 
     const url = `http://localhost:3008/jobs/${jobId}`;
-    console.log(jobId)
     
     jobtoDelete = { jobId }
 

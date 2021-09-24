@@ -3,7 +3,7 @@ const openModal = document.querySelector("#addjob")
 
 const openForm = () => {
     document.getElementById("modalForm").style.display = "block";
-    console.log("opened")
+
 }
 
 const addJob = async () => {
@@ -14,7 +14,6 @@ const addJob = async () => {
     const estimate = document.querySelector(".jobestimate").value;
     const expected_complete = document.querySelector(".jobexpected").value;
     const url = "http://localhost:3008/createJob";
-    console.log(name)
     
     jobObject = { name, job_number, purchase_order, 
         userId, estimate, expected_complete }
