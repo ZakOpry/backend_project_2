@@ -3,14 +3,14 @@ const rmvWeldModal = document.querySelector("#rmvweld")
 
 const rmvweldForm = () => {
     document.getElementById("removeWeldID").style.display = "block";
-    console.log("opened")
+
 }
 
 const rmvweld = async () => {
     const weldId = document.querySelector(".rmvweldId").value;
 
     const url = `http://localhost:3008/welds/${weldId}`;
-    console.log(weldId)
+
     
     weldtoDelete = { weldId }
 

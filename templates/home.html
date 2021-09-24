@@ -11,13 +11,13 @@
     <div class = "header">JOBStack</div>
 
     <div class = "crudgroup">
- 
     <button class = "crudbutton" id = "addjob">Add Job</button>
     <button class = "crudbutton" id = "rmvjob">Remove Job</button>
     <button class = "crudbutton" id = "updatejob">Update Job</button>
     <button class = "crudbutton" id = "addweld">Add Weld</button>
     <button class = "crudbutton" id = "rmvweld">Remove Weld</button>
     <button class = "crudbutton" id = "updateweld">Update Weld</button>
+    </div>
 
     <div class="addJob" id="modalForm">
         <div class="addjobformContainer">
@@ -53,11 +53,31 @@
 
     <div class="removeWeld" id="removeWeldID">
         <div class="removeweldformContainer">
-        <h1>Remove a Job:</h1>
+        <h1>Remove a Weld:</h1>
         <input class = "rmvweldId" type="text" placeholder = "Weld ID"></input>
         <button class = "weldModalRemove">Remove</button>
         </div>
     </div>
+
+    <div class="updateJob" id="updateJobID">
+        <div class="updatejobformContainer">
+        <h1>Update Job:</h1>
+        <input class = "updatejobnumber" type="text" placeholder = "Job Number"></input>
+        <input class = "updatejobestimate" type="text" placeholder = "Estimate"></input>
+        <input class = "updatejobexpected" type="text" placeholder = "Expected Complete"></input>
+        <button class = "jobModalupdate">Update</button>
+        </div>
+    </div> 
+
+    <div class="updateWeld" id="updateWeldID">
+        <div class="updateweldformContainer">
+        <h1>Update Weld:</h1>
+        <input class = "updateweldId" type="text" placeholder = "Weld ID"></input>
+        <input class = "updatepartNumber1" type="text" placeholder = "Part Number 1"></input>
+        <input class = "updatepartNumber2" type="text" placeholder = "Part Number 2"></input>
+        <button class = "weldModalupdate">Update</button>
+        </div>
+    </div> 
 
     <div class = "wrapper">
         <div class = "jobs"></div>    
@@ -67,6 +87,8 @@
 <script src="/public/addweldmodal.js"></script>
 <script src="/public/removejobmodal.js"></script>
 <script src="/public/removeweldmodal.js"></script>
+<script src="/public/updateweldmodal.js"></script>
+<script src="/public/updatejobmodal.js"></script>
 <script src="/public/home.js"></script>
 </html>
 

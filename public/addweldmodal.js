@@ -3,7 +3,6 @@ const weldModal = document.querySelector("#addweld")
 
 const weldForm = () => {
     document.getElementById("weldModal").style.display = "block";
-    console.log("opened")
 }
 
 const addWeld = async () => {
