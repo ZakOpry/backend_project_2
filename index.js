@@ -54,10 +54,13 @@ app.get('/users/jobs', async (req, res) => {
 app.get("/home", async (req, res) => {
     res.render("home")
 })
-
 //to search by user and get associated jobs
 app.get('/user/jobs/welds', async (req, res) => {
+
     const userJobs = await Job.findAll({
+        where: {
+            userId : 1
+        }
     })
     const welds = await Weld.findAll({
         where: {
@@ -149,7 +152,7 @@ const newUser = await User.create({
     email,
     password: hashedPassword
 })
-res.render("register")
+res.redirect("/login")
 })
 
 //to log in as a user
