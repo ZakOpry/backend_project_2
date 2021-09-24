@@ -1,4 +1,5 @@
-jobsContainer = document.querySelector(".jobs")
+const jobsContainer = document.querySelector(".jobs")
+
 const viewJobs = async () => {
     const url = "http://localhost:3008/user/jobs/welds";
 
@@ -17,18 +18,20 @@ const viewJobs = async () => {
     const accordion = document.createElement("div");
     const accordionButton = document.createElement("button");
     accordionButton.className = "collapsible"
-    accordionButton.innerHTML = `${job.name} ${job.job_number}`
+    accordionButton.innerHTML = `${job.id} ${job.name} ${job.job_number}`
     accordion.append(accordionButton)
     for (const weld of jobJson[1]) {
         const welds = document.createElement("p");
         if (weld.jobId === job.id) {
-            welds.innerHTML = `${weld.partNumber1} & ${weld.partNumber2} w/ code: ${weld.weldId}`
+            welds.innerHTML = ` ${weld.id} ${weld.partNumber1} & ${weld.partNumber2} w/ code: ${weld.weldId}`
         }
         accordion.append(welds)
     }
     
     jobsContainer.append(accordion)
     };
+
 };
+
 
 viewJobs();
