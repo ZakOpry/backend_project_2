@@ -6,6 +6,7 @@ const cors = require("cors")
 const path = require("path")
 const Sequelize = require('sequelize')
 const { User, Job, Weld } = require('./models');
+const { nextTick } = require('process')
 const PORT = 3008
 
 app.engine('html', es6Renderer)
@@ -31,11 +32,11 @@ app.get('/users', async (req, res) => {
 
 
 //to get user by id
-app.get('/user/:id', async (req, res) => {
-    const oneUser = await User.findByPk(req.params.id)
-    res.render("home", {locals:
-        {oneUser}})
-    })
+// app.get('/user/:id', async (req, res) => {
+//     const oneUser = await User.findByPk(req.params.id)
+//     res.render("home", {locals:
+//         {oneUser}})
+//     })
 
 
 
@@ -140,8 +141,6 @@ app.get('/register', async(req, res) => {
 app.post('/createuser', async (req, res) => {
 const { email, username, password } = req.body;
 const userPasword = password
-const userEmail = email
-const newUserName = username
 const salt = await bcrypt.genSalt();
 const hashedPassword = await bcrypt.hash(userPasword, salt)
 const newUser = await User.create({
@@ -152,32 +151,11 @@ const newUser = await User.create({
 res.render("register")
 })
 
-//to log in as a user
-app.get('/login', async(req, res) => {
-const username = req.body.username
-const email = req.body.email
-const password = req.body.password
-
-const user = await User.findAll({
-    where: {
-        username,
-        email,
-        password
-    }
-})
-if (user) {
-    res.redirect("http://localhost:3008/user/jobs/welds")
-} else {
-    res.redirect("error page")
-}
-
-})
 
 //log in page
 app.get('/login', async(req, res) => {
     res.render("login")
 })
-
 
 
 
@@ -195,16 +173,17 @@ const user = await User.findOne({
     }
 
 })
+
 const userData = user.dataValues
+const id = user.dataValues.id
 
 const validated = await bcrypt.compare(password, userData.password)
-console.log(validated)
+
 if (validated) {
-    res.redirect("")
+    res.redirect(`http://localhost:3008/user/17`)
 } else {
     res.redirect("error")
 }
-
 
 })
 
@@ -263,7 +242,7 @@ app.post('/updateJob/:job_number', async (req, res) => {
         
     })
     res.send(updateJob)
-    console.log(updateJob)
+    
 })
 
 //to update an existing weld

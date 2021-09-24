@@ -20,8 +20,13 @@ const logInUser = async () => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(userData),
+       
     })
+    
+    
     console.log(loginUserData)
+    window.location.assign("http://localhost:3008/home")
+    
 
 }
 

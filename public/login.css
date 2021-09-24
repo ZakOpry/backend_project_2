@@ -6,11 +6,12 @@ body {
     align-items: center;
     align-content: center;
     justify-items: center;
+    background-color: #979DAC;
 }
 
 .mainContainer{ 
     border: solid black 2px;
-    
+    background-color: #002855;
 height: 300px;
 width: 600px;
 display: flex;
@@ -40,6 +41,10 @@ margin: 10px;}
 
 a {
     text-decoration: none;
-    color: rgb(61, 72, 70);
+    color: white;
     margin: 10px;
+}
+
+h1{
+    color: white;
 }
