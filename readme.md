@@ -1,3 +1,3 @@
-#Current project goals:
+JobStack.com is a tool created for manufacturers to help track jobs and welding on jobs. This tool allows users to create, delete, and modify jobs and weld data. The user must register an account to use the site. Once registered, the user can log in and access all the job information and make their changes. This is an express app and therefore the port needs to be turned on prior to running the app. Once the port is turned on, connect to the localhost/login in the browser and begin using the site. 
 
-establish table relationships
+For more info on the site, please check out https://medium.com/@zakopry/jobstack-com-862ea5e4032b

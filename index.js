@@ -59,6 +59,12 @@ app.get("/home", async (req, res) => {
 //to search by user and get associated jobs
 app.get('/user/jobs/welds', async (req, res) => {
     const userJobs = await Job.findAll({
+<<<<<<< Updated upstream
+=======
+        where: {
+            userId : 17
+        }
+>>>>>>> Stashed changes
     })
     const welds = await Weld.findAll({
         where: {
